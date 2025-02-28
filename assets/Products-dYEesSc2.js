@@ -1,1 +1,0 @@
-import{r as t,j as r}from"./index-D4d8DnsJ.js";import{R as o}from"./RecentProduct-DlvdbmAB.js";import"./GridLoader-CAYA1Sfo.js";import"./animation-RB9YhObT.js";function m(){return t.useState(0),t.useEffect(()=>{},[]),r.jsx(o,{})}export{m as default};

@@ -1,0 +1,1 @@
+import{r as t,j as r}from"./index-x4Z8w8N4.js";import{R as o}from"./RecentProduct-efHjxGvF.js";import"./GridLoader-BqTYOYnP.js";import"./animation-RB9YhObT.js";function m(){return t.useState(0),t.useEffect(()=>{},[]),r.jsx(o,{})}export{m as default};
