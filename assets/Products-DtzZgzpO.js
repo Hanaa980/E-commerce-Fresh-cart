@@ -1,0 +1,1 @@
+import{r as t,j as r}from"./index-Ea1Gdlbw.js";import{R as e}from"./RecentProduct-tmmz6yxt.js";import"./ProductItem-B1PaWYj1.js";function a(){return t.useState(0),t.useEffect(()=>{},[]),r.jsx(e,{})}export{a as default};
