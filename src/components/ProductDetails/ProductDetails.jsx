@@ -44,9 +44,9 @@ export default function ProductDetails() {
   }, [id])
 
   return (
-    <>
-    {loader ? <div className=" flex w-fullh-lvh items-center justify-center"><GridLoader
-        color="#0aad0a" size={50}/></div> : <div className="w-11/12 m-auto sm:flex-row flex-col  flex  gap-y-5 justify-center my-10 items-center">
+  <>
+    {loader ? <div className="mt-[100px] flex w-fullh-lvh items-center justify-center"><GridLoader
+        color="#0aad0a" size={50}/></div> :<> <div className=" mt-[100px] w-11/12 m-auto sm:flex-row flex-col  flex  gap-y-5 justify-center my-10 items-center">
         <div className=" w-full p-2 sm:w-4/12 ">
         
          <Slider {...settings}>
@@ -64,10 +64,10 @@ export default function ProductDetails() {
         </div>
 
       </div>
-}
+
 
       <RelatedProducts product={productDetails}   />
+    </>}
     </>
-
   )
 }

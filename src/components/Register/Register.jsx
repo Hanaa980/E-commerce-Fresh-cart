@@ -1,18 +1,17 @@
 import { useState, useEffect, useContext } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import * as Yup from "yup" ;
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../context/tokenContext";
-export default function Register() {
+import axios from "axios";
 
+export default function Register(){
   const [apiError, setApiError] = useState(null);
   const [isLoader, sertIsLoader] = useState(false);
-
-  let navigate = useNavigate();
-  
+  let navigate = useNavigate() ;
   let {setToken} =useContext(tokenContext);
+
     const initialValues = {
     name: "",
     email: "",
@@ -32,18 +31,15 @@ export default function Register() {
     setApiError(null);
     sertIsLoader(true)
     try {
-
-
+      
+      let { data } = await axios.post('https://ecommerce.routemisr.com/api/v1/auth/signup', values);
       localStorage.setItem("u-token",data.token);
       setToken(data.token);
       navigate("/");
       sertIsLoader(false)
     } catch (error) {
-
-      setApiError(error.response.data.message)
-
-      sertIsLoader(false)
-
+      setApiError(error.response.data.message);
+      sertIsLoader(false);
     }
   }
 
@@ -51,19 +47,17 @@ export default function Register() {
   const formikRegister = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: callRegsiter
-
+    onSubmit: callRegsiter,
   })
 
   return (
-
-    <form onSubmit={formikRegister.handleSubmit} className="w-6/12 m-auto mb-5">
+    <form onSubmit={formikRegister.handleSubmit} className="w-6/12 m-auto mb-5 mt-[150px]">
       <h1 className="mb-5 ">Register Now:</h1>
       {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{apiError}
       </div> : " "}
-      <div className="mb-5">
-        <label htmlFor="NameInput" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
 
+      <div className="mb-5">
+        <label htmlFor="NameInput"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
         <input type="text" id="NameInput" name="name" value={formikRegister.values.name} onBlur={formikRegister.handleBlur} onChange={formikRegister.handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5" />
         {formikRegister.errors.name && formikRegister.touched.name ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{formikRegister.errors.name}
         </div> : " "}
@@ -98,8 +92,6 @@ export default function Register() {
       </div>
 
       <button type="submit" className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">{isLoader ? <ClipLoader size={20} color="#ffffff" /> : "submit"} </button>
-    </form>
-
-
+    </form> 
   )
 }

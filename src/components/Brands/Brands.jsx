@@ -1,5 +1,6 @@
 import { useState , useEffect} from "react";
 import axios from "axios";
+import { GridLoader } from "react-spinners";
 
 export default function Brands() {
 
@@ -23,8 +24,7 @@ export default function Brands() {
   }, []);
 
   return (
- 
-    <div className="container mt-[70px]  md:flex flex-wrap">
+ <>{ brands?   <div className="container mx-auto mt-[70px]  md:flex flex-wrap">
     {brands?.map((brand, index) => {
       return <div  key={index } className="mb-5  text-center  lg:w-3/12 md:w-6/12   p-5 ">
   <div className="border-2  hover:shadow-md hover:shadow-main duration-500">
@@ -38,6 +38,8 @@ export default function Brands() {
   
   })}
     </div>
-    
+    :<div className=" mt-[100px] flex justify-center items-center"><GridLoader
+    color="#0aad0a" size={50}/></div>}
+    </>
   )
 }

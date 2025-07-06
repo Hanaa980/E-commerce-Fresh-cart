@@ -56,7 +56,7 @@ export default function Login() {
 
   return (
 <>
-    <form onSubmit={formikLogin.handleSubmit} className="w-6/12 m-auto mb-5">
+    <form onSubmit={formikLogin.handleSubmit} className="w-6/12 m-auto mb-5 mt-[150px]">
       <h1 className="mb-5 ">Sign in </h1>
       {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{apiError}
       </div> : " "}

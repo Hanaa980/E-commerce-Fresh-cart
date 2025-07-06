@@ -38,7 +38,7 @@ export default function CartContextProvider(props) {
             { headers })
         if (data.status == "success") {
             setNumOfItems(data.numOfCartItems)
-
+await getCart()
         }
         
 

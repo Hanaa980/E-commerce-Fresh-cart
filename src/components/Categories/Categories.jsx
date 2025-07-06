@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { GridLoader } from "react-spinners";
 
 export default function Categories() {
 
@@ -21,8 +22,8 @@ export default function Categories() {
   }, []);
 
   return (
-
-    <div className="container md:flex flex-wrap mt-[70px]">
+<>
+  { categories? <div className="container mx-auto md:flex flex-wrap mt-[70px]">
       {categories?.map((category, index) => {
 
         return <div key={index} className="mb-5  text-center  lg:w-3/12 md:w-6/12   p-5   ">
@@ -37,9 +38,10 @@ export default function Categories() {
 
       })}
     </div>
-
-
-
+:<div className=" mt-[100px] flex justify-center items-center"><GridLoader
+color="#0aad0a" size={50}/></div>
+    }
+</>
 
   )
 }

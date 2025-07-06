@@ -7,9 +7,7 @@ import { lazy, Suspense, useContext, useEffect } from 'react';
 import { tokenContext } from './components/context/tokenContext';
 import ProtectedRoutes from './components/context/protectedRoutes';
 import { ToastContainer } from 'react-toastify';
-// import ForgetPass from './components/forgetPass/ForgetPass';
-// import ResetPass from './components/resetPass/resetPass';
-// import VerifyCode from './components/VerifyCode/VerifyCode';
+
 
 function App() {
   let { setToken } = useContext(tokenContext)
@@ -54,7 +52,7 @@ function App() {
         { path: "resetpassword", element:<Suspense> <ResetPass /></Suspense> },
         { path: "verifycode", element: <Suspense><VerifyCode /></Suspense> },
         { path: "register", element:<Suspense> <Register /></Suspense> },
-        { path: "cart", element:<Suspense> <ProtectedRoutes><Cart /></ProtectedRoutes></Suspense> },
+        { path: "cart", element: <Suspense><ProtectedRoutes><Cart /></ProtectedRoutes></Suspense> },
         { path: "checkout/:cartId", element:<Suspense> <ProtectedRoutes><Checkout /></ProtectedRoutes></Suspense> },
         { path: "allorders", element:<Suspense> <ProtectedRoutes><Orders /></ProtectedRoutes></Suspense> },
         { path: "whishlist", element:<Suspense> <ProtectedRoutes><WishList /></ProtectedRoutes></Suspense> },
@@ -80,7 +78,3 @@ export default App
 
 
 
-
-// component => product ^.^
-// component => btn ^.^
-// related products
