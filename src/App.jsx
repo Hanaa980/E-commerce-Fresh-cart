@@ -1,4 +1,4 @@
-import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
+import {createHashRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Brands from './components/Brands/Brands';
 import Categories from './components/Categories/Categories';
@@ -34,15 +34,9 @@ function App() {
   
   const Router = createHashRouter([
     {
-      path: "", element:
-       <Suspense> <Layout /></Suspense>,
+      path: "", element:<Suspense> <Layout /></Suspense>,
       children: [
-        {
-          path: "", element:<Suspense> <ProtectedRoutes>
-            <Home />
-          </ProtectedRoutes>
-          </Suspense>
-        },
+        {path: "", element:<Suspense> <ProtectedRoutes><Home /></ProtectedRoutes></Suspense>},
         { path: "brands", element: <ProtectedRoutes> <Brands /> </ProtectedRoutes> },
         { path: "products", element: <Suspense> <ProtectedRoutes><Products /> </ProtectedRoutes> </Suspense>},
         { path: "productDetails/:id/:categoryId", element:<Suspense> <ProtectedRoutes><ProductDetails /> </ProtectedRoutes></Suspense> },
@@ -56,11 +50,8 @@ function App() {
         { path: "checkout/:cartId", element:<Suspense> <ProtectedRoutes><Checkout /></ProtectedRoutes></Suspense> },
         { path: "allorders", element:<Suspense> <ProtectedRoutes><Orders /></ProtectedRoutes></Suspense> },
         { path: "whishlist", element:<Suspense> <ProtectedRoutes><WishList /></ProtectedRoutes></Suspense> },
-
-
-
         { path: "*", element: <NotFound /> }
-      ]
+                ]
     }
   ])
   return (

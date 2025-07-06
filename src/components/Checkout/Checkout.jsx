@@ -83,11 +83,11 @@ if(orderType=="cache"){
       </div>
       <div className="mb-3  text-lg">
         <input onChange={getOrderType} className="mx-1" type="radio" value={"cache"} id="cache" name="orderType" />
-        <label htmlFor="cache">cache</label>
+        <label htmlFor="cache">Cach</label>
       </div>
       <div className="text-lg">
         <input onChange={getOrderType} className="mx-1" aria-selected="true" type="radio" value={"online"} id="online" name="orderType" />
-        <label htmlFor="online">online</label>
+        <label htmlFor="online">Online</label>
       </div>
 
       <button type="submit" className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">submit </button>
