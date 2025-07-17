@@ -4,6 +4,7 @@ import * as Yup from "yup"
 import { useNavigate, useParams } from "react-router-dom";
 import { OrderContext } from "../context/orderContext";
 import { cartContext } from "../context/cartContext";
+import { Helmet } from "react-helmet";
 export default function Checkout() {
 
 
@@ -46,6 +47,7 @@ if(orderType=="cache"){
   
   setNumOfItems(0)
   setCartDetails(null)
+  // navigate("/allorders")
 }
   }
 
@@ -57,8 +59,9 @@ if(orderType=="cache"){
   })
 
   return (
+<>  <Helmet><title> Check out</title></Helmet>
 
-    <form onSubmit={addressForm.handleSubmit} className="w-6/12 m-auto mb-5">
+    <form onSubmit={addressForm.handleSubmit} className="mt-[100px] w-6/12 m-auto mb-5">
       <h1 className="mb-5 ">Checkout form</h1>
 
 
@@ -93,7 +96,7 @@ if(orderType=="cache"){
       <button type="submit" className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">submit </button>
     </form>
 
-
+</>
   )
 }
 

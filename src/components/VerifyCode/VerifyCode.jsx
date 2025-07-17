@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function VerifyCode() {
   let navigate = useNavigate();
     
@@ -42,6 +43,8 @@ export default function VerifyCode() {
     })
     
   return (
+    <> <Helmet><title> Verify Code </title></Helmet>
+
     <form onSubmit={formikCode.handleSubmit} className="w-6/12 m-auto mb-5">
     {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{apiError}
     </div> : ""}
@@ -56,5 +59,6 @@ export default function VerifyCode() {
     
     <button type="submit" className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">{isLoader ? <ClipLoader size={20} color="#ffffff" /> : "verify Your Code"} </button>
     </form>
+    </>
   )
 }

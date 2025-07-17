@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "./../../assets/imges/freshcart-logo.svg";
 import { tokenContext } from "../context/tokenContext";
 import { cartContext } from "../context/cartContext";
@@ -12,39 +12,40 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     setIsOpen(false);
-  }, [token]);
+  }, [token,location]);
 
   function logOut() {
     localStorage.removeItem("u-token");
     setToken("");
     navigate("/login");
-    setIsOpen(false);
   }
+  
+
 
   return (
     <nav className="bg-white border-gray-200 fixed top-0 start-0 end-0 z-[100000]">
       <div
-        className="max-w-screen-xl flex flex-wrap items-center lg:gap-[150px] justify-between lg:justify-start mx-auto p-4"
+        className="max-w-screen-xl flex flex-nowrap items-center lg:gap-[150px] justify-between lg:justify-start mx-auto p-4"
         onClick={(e) => {
           if (menuRef.current && !menuRef.current.contains(e.target)) {
             setIsOpen(false);
           }
         }}
       >
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 w-[150px] sm:w-auto">
           <Link to="" className="flex items-center">
             <img src={logo} className="h-8" alt="FreshCart Logo" />
           </Link>
 
           {token && (
             <div
-              ref={menuRef}
               className={`${
-                isOpen ? "block" : "hidden"
-              } lg:flex lg:items-center w-full lg:w-auto absolute lg:static top-16 right-0 bg-gray-50 lg:bg-white p-2 lg:p-0 border lg:border-0`}
+                isOpen ? " right-0" : "right-[-300px]"
+              } lg:flex lg:items-center w-[300px] lg:w-auto absolute lg:static top-16 right-0 bg-gray-50 lg:bg-white p-2 lg:p-0 border lg:border-0  duration-[1s]`}
               id="navbar-multi-level"
             >
               <ul className="flex flex-col lg:flex-row lg:space-x-3 mb-8 lg:m-0">
@@ -88,7 +89,7 @@ export default function Navbar() {
           )}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center">
           {!token ? (
             <>
               <NavLink to="login" className="m-2 p-2">

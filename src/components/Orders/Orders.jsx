@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { ClipLoader } from "react-spinners";
+import { Helmet } from "react-helmet";
+
 export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [openModal, setOpenModal] = useState(null);
@@ -45,7 +47,9 @@ export default function Orders() {
   };
 
   return (
- <div className="h-[80vh] relative mt-[70px]">
+    <>  <Helmet><title> Orders </title></Helmet>
+
+ <div className="min-h-[80vh] relative mt-[70px]">
  {isLoader?
  <div className="flex items-center justify-center"><ClipLoader size={50} color="#000" /></div>:<>
     <div className="bg-slate-500 flex justify-between w-full m-auto text-center ">
@@ -120,6 +124,6 @@ export default function Orders() {
     )}
     </>}
   </div>
-
+</>
   );
 }

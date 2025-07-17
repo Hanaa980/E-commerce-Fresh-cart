@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
 import { tokenContext } from "./../context/tokenContext";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
   const [apiError, setApiError] = useState(null);
@@ -54,6 +55,7 @@ export default function Login() {
 
   return (
     <>
+     <Helmet><title>Login </title></Helmet>
       <form
         onSubmit={formikLogin.handleSubmit}
         className="w-6/12 m-auto mb-5 mt-[150px]"

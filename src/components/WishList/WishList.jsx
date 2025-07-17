@@ -4,17 +4,19 @@ import { tokenContext } from "../context/tokenContext";
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/cartContext";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
+import ProductItem from "./../ProductItem/ProductItem";
 
 export default function WishList() {
   let { addToCart, setCartDetails } = useContext(cartContext);
-  let { token } = useContext(tokenContext)
-  let { getWishList, removeFromWishList, wishList } = useContext(WishListContext)
-
+  let { token } = useContext(tokenContext);
+  let { getWishList, removeFromWishList, wishList } =
+    useContext(WishListContext);
 
   async function finalAddToCart(id) {
     let data = await addToCart(id);
-    setCartDetails(data)
-    remove(id)
+    setCartDetails(data);
+    remove(id);
 
     if (data.status == "success") {
       toast.success(data.message, {
@@ -27,35 +29,45 @@ export default function WishList() {
   }
 
   async function remove(id) {
-    await removeFromWishList(id)
+    await removeFromWishList(id);
   }
   useEffect(() => {
-    token && getWishList()
+    token && getWishList();
   }, []);
 
-
   return (
-    <div className=" flex  w-full  items-center  ">
-      <div className="flex  flex-col sm:flex-row w-full gap-y-5">
-        {wishList.map(product => {
-          return <div key={product.id} className="product   sm:w-6/12  md:w-4/12 lg:w-2/12 w-full p-2"  >
-            <Link to={`/productDetails/${product.id}/${product.category._id}`}>
-              <div className="w-[80%] m-auto ">
-                <img src={product.imageCover} className="w-full" alt="" /></div>
-            </Link>
-            <div className="  flex  flex-col justify-center items-center">
-              <h2>{product.title.split(" ").splice(0, 2).join(" ")}</h2>
+    <>
+      <Helmet>
+        <title> Wish List</title>
+      </Helmet>
 
-              <p>{product.price} eg</p>
+      <div className=" mt-[100px] w-full   ">
+        {wishList.length === 0 ? (
+          <>
+            <div className="flex flex-col justify-center items-center h-[65vh] w-full">
+              <i className="fa-solid fa-heart text-9xl text-gray-600/50 my-5"></i>
+              <h2 className="text-2xl font-bold">Your wish List is empty</h2>
 
-              <button className="text-red-700 mb-3" onClick={() => remove(product.id)}>remove</button>
+              <Link to={"/products"}>
+                <button className="btn bg-main p-5 text-white rounded-3xl m-5 font-bold ">
+                  Browser products
+                </button>
+              </Link>
             </div>
-            <button onClick={() => finalAddToCart(product.id)} className=" bg-main p-2 rounded-lg text-white w-full">add to cart</button>
-          </div>
-
-            ;
-        })}
+          </>
+        ) : (
+          <>
+            <h2 className="text-2xl font-bold mx-5  ">
+              Your Favorite products
+            </h2>
+            <div className=" flex flex-col sm:flex-row flex-wrap ">
+              {wishList.map((product) => (
+                <ProductItem key={product._id} product={product} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
-    </div>
-  )
+    </>
+  );
 }

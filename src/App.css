@@ -24,7 +24,7 @@ a , a:hover{
     color: black;
     text-decoration: none;
 }
-
+/* 
 .product .btn 
 {
     transition: transform 1s , opacity 1s;
@@ -36,7 +36,7 @@ a , a:hover{
     opacity: 1;
     transform: translateY(0%);
 
-}
+} */
 .font-sm
 {
     font-size: 14px;

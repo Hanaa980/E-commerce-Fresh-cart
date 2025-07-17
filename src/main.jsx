@@ -15,6 +15,7 @@ import WishListContextProvider from './components/context/WishListContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+
     < TokenContextProvider>
       <CartContextProvider>
         <WishListContextProvider>
@@ -24,5 +25,6 @@ createRoot(document.getElementById('root')).render(
         </WishListContextProvider>
       </CartContextProvider>
     </TokenContextProvider>
+
   </StrictMode>,
 )

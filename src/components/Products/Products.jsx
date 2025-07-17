@@ -1,5 +1,6 @@
 import { useState , useEffect} from "react";
 import RecentProduct from "../RecentProduct/RecentProduct";
+import { Helmet } from "react-helmet";
 
 export default function Products() {
 
@@ -7,7 +8,9 @@ export default function Products() {
     useEffect(()=>{} ,[]);
 
   return (
-   
+   <> <Helmet><title> Products</title></Helmet>
+
          <RecentProduct />
+         </>
   )
 }

@@ -8,7 +8,6 @@ import { tokenContext } from './components/context/tokenContext';
 import ProtectedRoutes from './components/context/protectedRoutes';
 import { ToastContainer } from 'react-toastify';
 
-
 function App() {
   let { setToken } = useContext(tokenContext)
   useEffect(() => {
@@ -57,6 +56,7 @@ function App() {
   return (
 
     <>
+    
       <RouterProvider router={Router}>
       </RouterProvider>
 

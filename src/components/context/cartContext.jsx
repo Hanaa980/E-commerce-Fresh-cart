@@ -12,6 +12,7 @@ export default function CartContextProvider(props) {
     const [cartDetails, setCartDetails] = useState('')
     const [checked, setChecked] = useState([])
     
+  const [isLoader, setIsLoader] = useState(false);
 
     let { token } = useContext(tokenContext)
     const headers = {
@@ -19,17 +20,21 @@ export default function CartContextProvider(props) {
     }
 
     async function addToCart(productId) {
+
         let { data } = await axios.post("https://ecommerce.routemisr.com/api/v1/cart",
             { productId },
             { headers })
         if (data.status == "success") {
             setNumOfItems(data.numOfCartItems)
             setCartDetails(data)
+
         }
 
         
       return data
     }
+
+
 
     async function updateCountToCart(productId,count) {
 
@@ -85,11 +90,8 @@ await getCart()
             
         
     }, [token]);
-            return <cartContext.Provider value={{setChecked, checked,setNumOfItems,addToCart,updateCountToCart,clearCart, numOfItems, getCart, cartDetails, setCartDetails, removeItemFromCart }}>
+            return <cartContext.Provider value={{isLoader,setIsLoader,setChecked, checked,setNumOfItems,addToCart,updateCountToCart,clearCart, numOfItems, getCart, cartDetails, setCartDetails, removeItemFromCart }}>
         {props.children}
     </cartContext.Provider>
 }
-
-
-
 

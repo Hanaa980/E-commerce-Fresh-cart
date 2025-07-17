@@ -5,6 +5,7 @@ import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { tokenContext } from "../context/tokenContext";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 export default function Register(){
   const [apiError, setApiError] = useState(null);
@@ -51,6 +52,9 @@ export default function Register(){
   })
 
   return (
+    <>
+         <Helmet><title>Register </title></Helmet>
+
     <form onSubmit={formikRegister.handleSubmit} className="w-6/12 m-auto mb-5 mt-[150px]">
       <h1 className="mb-5 ">Register Now:</h1>
       {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{apiError}
@@ -93,5 +97,6 @@ export default function Register(){
 
       <button type="submit" className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main">{isLoader ? <ClipLoader size={20} color="#ffffff" /> : "submit"} </button>
     </form> 
+    </>
   )
 }

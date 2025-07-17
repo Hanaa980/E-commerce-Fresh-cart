@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { ClipLoader } from "react-spinners";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 export default function ForgetPass() {
   let navigate = useNavigate();
   const [apiError, setApiError] = useState(null);
@@ -49,8 +51,9 @@ export default function ForgetPass() {
 
   return (
 <>
+ <Helmet><title> Forget Password </title></Helmet>
 
-  <form onSubmit={formikForgetPass.handleSubmit} className="w-6/12 m-auto mb-5">
+  <form onSubmit={formikForgetPass.handleSubmit} className="mt-[100px]  w-6/12 m-auto mb-5">
 {apiError ? <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">{apiError}
 </div> : ""}
 

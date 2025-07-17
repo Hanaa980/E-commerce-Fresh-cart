@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { GridLoader } from "react-spinners";
+import { Helmet } from "react-helmet";
 
 export default function Categories() {
 
@@ -14,7 +15,7 @@ export default function Categories() {
       setCategories(data.data)
 
 
-    }).catch(err => {  })
+    })
   }
 
   useEffect(() => {
@@ -22,17 +23,18 @@ export default function Categories() {
   }, []);
 
   return (
-<>
-  { categories? <div className="container mx-auto md:flex flex-wrap mt-[70px]">
+<>   <Helmet><title> Categories</title></Helmet>
+
+  { categories? <div className="container mx-auto sm:flex flex-wrap mt-[100px] px-10">
       {categories?.map((category, index) => {
 
-        return <div key={index} className="mb-5  text-center  lg:w-3/12 md:w-6/12   p-5   ">
-          <div className="border-2  hover:shadow-md hover:shadow-main duration-500">
+        return <div key={index} className="mb-5  text-center  xl:w-3/12 lg:w-4/12  sm:w-6/12   p-5">
+          <div className="border-2  shadow-md shadow-gray-300 rounded-xl overflow-hidden duration-500 ">
 
-            <div className="img-box h-96 ">
-              <img src={category.image} className=" h-[100%] object-cover w-full" alt="" />
+            <div className="img-box sm:h-40  ">
+              <img src={category.image} className=" h-[100%] object-cover w-full" alt={category.name} />
             </div>
-            <h3 className="p-5 bg-white text-xl">{category.name}</h3>
+            <h3 className="p-5 bg-gray-100 text-xl">{category.name}</h3>
           </div>
         </div>
 

@@ -29,8 +29,8 @@ export default function RelatedProducts({ product }) {
 
   return (
     <>
-      <h2 className="text-2xl">RelatedProducts </h2>
-      <div className="flex flex-wrap my-10" >
+      <h2 className="text-2xl text-center font-bold ">Related products </h2>
+      <div className="flex flex-wrap my-10 px-10 " >
       {relatedProducts.map(relatedProduct =>
         <ProductItem product={relatedProduct} key={relatedProduct.id}/>
       )}
