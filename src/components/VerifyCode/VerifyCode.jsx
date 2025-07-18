@@ -49,7 +49,7 @@ export default function VerifyCode() {
       <Helmet>
         <title> Verify Code </title>
       </Helmet>
-      <form onSubmit={formikCode.handleSubmit} className="mt-[100px] w-6/12 m-auto mb-5">
+      <form onSubmit={formikCode.handleSubmit} className="w-6/12 m-auto mb-5">
         {apiError ? (
           <div
             className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"

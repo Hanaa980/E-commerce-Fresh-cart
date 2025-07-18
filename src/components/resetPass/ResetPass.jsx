@@ -57,7 +57,7 @@ export default function ResetPass() {
       </Helmet>
       <form
         onSubmit={formikResetPass.handleSubmit}
-        className="mt-[100px] w-6/12 m-auto mb-5"
+        className="mt-[150px] w-6/12 m-auto mb-5"
       >
         <h1 className="mb-5 ">Reset New Password</h1>
         {apiError ? (
