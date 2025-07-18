@@ -82,10 +82,7 @@ export default function Cart() {
                              mb-10 "
                             >
                               <div className=" font-semibold text-gray-900 dark:text-white me-2 md:m-0">
-                                {product.product.title
-                                  .split(" ")
-                                  .splice(0, 2)
-                                  .join(" ")}
+                                {product.product.title.split(" ").splice(0, 2).join(" ")}
                               </div>
                               <button
                                 onClick={() => remove(product.product.id)}
