@@ -16,15 +16,13 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [token,location]);
+  }, [token, location]);
 
   function logOut() {
     localStorage.removeItem("u-token");
     setToken("");
     navigate("/login");
   }
-  
-
 
   return (
     <nav className="bg-white border-gray-200 fixed top-0 start-0 end-0 z-[100000]">
@@ -50,7 +48,9 @@ export default function Navbar() {
             >
               <ul className="flex flex-col lg:flex-row lg:space-x-3 mb-8 lg:m-0">
                 <li>
-                  <NavLink to="" className="block py-2 px-2 text-black">Home</NavLink>
+                  <NavLink to="" className="block py-2 px-2 text-black">
+                    Home
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink to="products" className="block py-2 px-2 text-black">

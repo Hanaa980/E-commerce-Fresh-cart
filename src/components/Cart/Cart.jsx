@@ -2,11 +2,11 @@ import { useEffect, useContext, useState } from "react";
 import { cartContext } from "./../context/cartContext";
 import { Link } from "react-router-dom";
 import { tokenContext } from "../context/tokenContext";
-import { GridLoader } from "react-spinners";
+import { ClipLoader, GridLoader } from "react-spinners";
 import { Helmet } from "react-helmet";
 
 export default function Cart() {
-  // const [loader, setLoader] = useState(true)
+  const [productLoaders, setProductLoaders] = useState({});
   let { token } = useContext(tokenContext);
   let {
     cartDetails,
@@ -19,6 +19,18 @@ export default function Cart() {
   useEffect(() => {
     token && getCart();
   }, []);
+
+  const handleUpdateCountToCart = async (productId, count) => {
+    setProductLoaders((prevState) => ({
+      ...prevState,
+      [productId]: true,
+    }));
+    await updateCountToCart(productId, count);
+    setProductLoaders((prevState) => ({
+      ...prevState,
+      [productId]: false,
+    }));
+  };
 
   async function remove(id) {
     let data = await removeItemFromCart(id);
@@ -46,11 +58,9 @@ export default function Cart() {
                 </Link>
               </div>
             ) : (
-         <>
-         <h2 className="font-bold text-4xl m-5 my-9">Your cart</h2>
+              <>
+                <h2 className="font-bold text-4xl m-5 my-9">Your cart</h2>
                 <div className=" my-10 relative shadow-md rounded-2xl  ">
-                       
-              
                   <div className="border-gray-400 border-2 md:p-5  shadow-lg rounded-2xl divide-y divide-gray-200 dark:divide-gray-700">
                     {cartDetails?.data?.products.map((product) => (
                       <div
@@ -66,16 +76,18 @@ export default function Cart() {
                             />
                           </div>
 
-
-
-
                           <div className="md:w-2/3 w-full   ">
-                            <div className="flex justify-between
-                             mb-10 ">
+                            <div
+                              className="flex justify-between
+                             mb-10 "
+                            >
                               <div className=" font-semibold text-gray-900 dark:text-white me-2 md:m-0">
-                              {product.product.title.split(" ").splice(0, 2).join(" ")}
-                            </div>
-                             <button
+                                {product.product.title
+                                  .split(" ")
+                                  .splice(0, 2)
+                                  .join(" ")}
+                              </div>
+                              <button
                                 onClick={() => remove(product.product.id)}
                                 className="text-red-600 dark:text-red-500 hover:underline"
                               >
@@ -83,37 +95,42 @@ export default function Cart() {
                               </button>
                             </div>
                             <div className="flex justify-between  ">
-                               <div className="font-semibold text-gray-900 dark:text-white">
-                              {product.price * product.count} EGP
+                              <div className="font-semibold text-gray-900 dark:text-white">
+                                {product.price * product.count} EGP
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <button
+                                  onClick={() =>
+                                    handleUpdateCountToCart(
+                                      product.product.id,
+                                      product.count - 1
+                                    )
+                                  }
+                                  className=" w-[20px]  flex justify-center items-center  text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400"
+                                >
+                                  -
+                                </button>
+                                <span>
+                                  {productLoaders[product.product.id] ? (
+                                    <ClipLoader size={20} color="#000 " />
+                                  ) : (
+                                    product.count
+                                  )}
+                                </span>
+                                <button
+                                  onClick={() =>
+                                    handleUpdateCountToCart(
+                                      product.product.id,
+                                      product.count + 1
+                                    )
+                                  }
+                                  className="w-[20px] flex justify-center items-center text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400"
+                                >
+                                  +
+                                </button>
+                              </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <button
-                                onClick={() =>
-                                  updateCountToCart(
-                                    product.product.id,
-                                    product.count - 1
-                                  )
-                                }
-                                className=" w-[20px]  flex justify-center items-center  text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400"
-                              >-</button>
-                              <span>{product.count}</span>
-                              <button
-                                onClick={() =>
-                                  updateCountToCart(
-                                    product.product.id,
-                                    product.count + 1
-                                  )
-                                }
-                                className="w-[20px] flex justify-center items-center text-gray-500 bg-white border border-gray-300 rounded-full hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400"
-                              >
-                                +
-                              </button>
-                            </div>
-                           
-                            </div>
-                            <div>
-                             
-                            </div>
+                            <div></div>
                           </div>
                         </div>
                       </div>
@@ -122,7 +139,7 @@ export default function Cart() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-center bg-gray-50 dark:bg-gray-700 p-4 text-gray-700 dark:text-gray-400 text-xs font-semibold uppercase">
-                  <span className="sm:text-2xl text-lg" >
+                  <span className="sm:text-2xl text-lg">
                     Total Cart Price: {cartDetails?.data?.totalCartPrice}
                   </span>
                   <button

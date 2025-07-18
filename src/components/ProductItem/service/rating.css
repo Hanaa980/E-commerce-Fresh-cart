@@ -9,11 +9,10 @@
   color: #ccc;
   position: relative;
   display: inline-block;
-
 }
 
 .stars-inner {
-  color: #FFD700;
+  color: #ffd700;
   position: absolute;
   top: 0;
   left: 0;

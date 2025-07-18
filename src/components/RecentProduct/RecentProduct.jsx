@@ -60,7 +60,7 @@ export default function RecentProduct({ count }) {
       <input type="search" placeholder="search..." value={searchValue} onChange={(e) => setSearchVal(e.target.value)} className="w-1/2 search-input border-gray-400  shadow-lg  rounded-xl focus:border-none focus:ring-lime-400 ring-0 "/>
     </div>
     {loader ? <div className=" flex w-full h-lvh items-center justify-center"><GridLoader
-      color="#0aad0a" size={50} /></div> : <div className="flex justify-center md:justify-start  h-auto flex-wrap gap-y-10 sm:px-10  p-7">
+      color="#0aad0a" size={50} /></div> : <div className="flex justify-center md:justify-start  h-auto flex-wrap gap-y-10 sm:px-10  sm:p-7 p-3">
       {searchValue ? !filteredProducts.length == 0 ?
         filteredProducts.map(product => (<ProductItem product={product} key={product.id} />)) : <div className="flex justify-center  w-full items-center h-min "><p>No items starts with this letter</p></div>
         :

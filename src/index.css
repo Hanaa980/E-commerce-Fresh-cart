@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.active{
-    @apply bg-main rounded-lg text-white
+.active {
+  @apply bg-main rounded-lg text-white;
 }

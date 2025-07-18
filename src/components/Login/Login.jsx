@@ -55,7 +55,9 @@ export default function Login() {
 
   return (
     <>
-     <Helmet><title>Login </title></Helmet>
+      <Helmet>
+        <title>Login </title>
+      </Helmet>
       <form
         onSubmit={formikLogin.handleSubmit}
         className="w-6/12 m-auto mb-5 mt-[150px]"
@@ -133,7 +135,7 @@ export default function Login() {
           type="submit"
           className="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm block ms-auto  px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main"
         >
-          {isLoader ? <ClipLoader size={20} color="#ffffff" /> : "Login"}{" "}
+          {isLoader ? <ClipLoader size={20} color="#ffffff" /> : "Login"}
         </button>
       </form>
     </>

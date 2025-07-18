@@ -3,7 +3,6 @@ import RecentProduct from "./../RecentProduct/RecentProduct";
 import Slider from "react-slick";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-// import Categories from './../Categories/Categories';
 import heroIcon from "./../../assets/imges/hero-section.png";
 import { Link } from "react-router-dom";
 
@@ -57,7 +56,6 @@ export default function Home() {
     ],
   };
 
-
   return (
     <>
       <Helmet>
@@ -110,11 +108,11 @@ export default function Home() {
         </div>
       </div>
       <div className=" ">
-        <RecentProduct count={4}/>
+        <RecentProduct count={4} />
         <div className="text-center">
           <Link to={"/products"}>
             <button className="  justify-center bg-main p-5 text-white rounded-3xl m-5 font-bold ">
-              See all products{" "}
+              See all products
               <i className="fa-solid fa-arrow-right fa-fade "></i>
             </button>
           </Link>

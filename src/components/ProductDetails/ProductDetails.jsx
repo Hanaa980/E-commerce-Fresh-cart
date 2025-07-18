@@ -38,26 +38,24 @@ export default function ProductDetails() {
       });
   }
 
-
-useEffect(() => {
-  setProductDetails({});
-  setLoader(true);
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  getProducts();
-}, [id]);
+  useEffect(() => {
+    setProductDetails({});
+    setLoader(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    getProducts();
+  }, [id]);
 
   return (
     <>
       <Helmet>
         <title> Product Details </title>
       </Helmet>
-    {loader ? (
+      {loader ? (
         <div className="mt-[100px] flex w-fullh-lvh items-center justify-center">
           <GridLoader color="#0aad0a" size={50} />
         </div>
       ) : (
         <>
-          {" "}
           <div className=" mt-[100px] w-8/12 md:w-8/12 m-auto md:flex-row flex-col  flex  gap-5 justify-center md:justify-between my-10 items-center ">
             <div className="w-full px-5 md:w-5/12 border ">
               <Slider {...settings}>
@@ -77,14 +75,10 @@ useEffect(() => {
               <Btn product={productDetails} addToCart={addToCart} />
             </div>
           </div>
-
-
-             
         </>
       )}
-       <RelatedProducts product={productDetails} />
-      
-      {/* </div> */}
+      <RelatedProducts />
+
     </>
   );
 }

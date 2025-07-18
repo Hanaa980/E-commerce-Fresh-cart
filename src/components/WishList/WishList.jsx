@@ -2,35 +2,14 @@ import { useState, useEffect, useContext } from "react";
 import { WishListContext } from "../context/WishListContext";
 import { tokenContext } from "../context/tokenContext";
 import { Link } from "react-router-dom";
-import { cartContext } from "../context/cartContext";
-import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import ProductItem from "./../ProductItem/ProductItem";
 
 export default function WishList() {
-  let { addToCart, setCartDetails } = useContext(cartContext);
   let { token } = useContext(tokenContext);
-  let { getWishList, removeFromWishList, wishList } =
+  let { getWishList, wishList } =
     useContext(WishListContext);
 
-  async function finalAddToCart(id) {
-    let data = await addToCart(id);
-    setCartDetails(data);
-    remove(id);
-
-    if (data.status == "success") {
-      toast.success(data.message, {
-        position: "bottom-right",
-        autoClose: 3000,
-        draggable: true,
-        theme: "colored",
-      });
-    }
-  }
-
-  async function remove(id) {
-    await removeFromWishList(id);
-  }
   useEffect(() => {
     token && getWishList();
   }, []);
