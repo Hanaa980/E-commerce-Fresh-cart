@@ -8,11 +8,12 @@ import { toast } from "react-toastify";
 export let cartContext = createContext();
 
 export default function CartContextProvider(props) {
+//   const [isitLoader, setIsLoader] = useState(false);
+
     const [numOfItems, setNumOfItems] = useState(0)
     const [cartDetails, setCartDetails] = useState('')
     const [checked, setChecked] = useState([])
     
-  const [isLoader, setIsLoader] = useState(false);
 
     let { token } = useContext(tokenContext)
     const headers = {
@@ -27,7 +28,9 @@ export default function CartContextProvider(props) {
         if (data.status == "success") {
             setNumOfItems(data.numOfCartItems)
             setCartDetails(data)
-
+         
+            // setChecked(data?.data?.products?.map(product => product.product.id) || []);
+       await getCart()
         }
 
         
@@ -44,6 +47,7 @@ export default function CartContextProvider(props) {
         if (data.status == "success") {
             setNumOfItems(data.numOfCartItems)
 await getCart()
+setCartDetails(data)
         }
         
 
@@ -74,6 +78,7 @@ await getCart()
               
         }
         setCartDetails(data)
+        await getCart()
     }
 
 
@@ -84,13 +89,13 @@ await getCart()
         }
         setCartDetails(data)
         await getCart()
-    }
+           }
     useEffect(() => {
         token && getCart();
             
         
     }, [token]);
-            return <cartContext.Provider value={{isLoader,setIsLoader,setChecked, checked,setNumOfItems,addToCart,updateCountToCart,clearCart, numOfItems, getCart, cartDetails, setCartDetails, removeItemFromCart }}>
+            return <cartContext.Provider value={{setChecked, checked,setNumOfItems,addToCart,updateCountToCart,clearCart, numOfItems, getCart, cartDetails, setCartDetails, removeItemFromCart }}>
         {props.children}
     </cartContext.Provider>
 }
