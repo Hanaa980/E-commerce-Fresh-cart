@@ -1,0 +1,1 @@
+import{j as t,H as r}from"./index-hCEOjRPY.js";import{R as e}from"./RecentProduct-CABdUj8Q.js";import"./ProductItem-BowmDCM-.js";import"./ClipLoader-B-FymVeG.js";function n(){return t.jsxs(t.Fragment,{children:[t.jsx(r,{children:t.jsx("title",{children:" Products"})}),t.jsx(e,{})]})}export{n as default};
