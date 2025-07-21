@@ -50,11 +50,11 @@ export default function ForgetPass() {
 
       <form
         onSubmit={formikForgetPass.handleSubmit}
-        className="mt-[100px]  w-6/12 m-auto mb-5"
+        className="my-[200px] mx-auto w-8/12 border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100/50"
       >
         {apiError ? (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
             role="alert"
           >
             {apiError}

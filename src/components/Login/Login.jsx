@@ -60,7 +60,7 @@ export default function Login() {
       </Helmet>
       <form
         onSubmit={formikLogin.handleSubmit}
-        className="w-6/12 m-auto mb-5 mt-[150px]"
+        className="w-8/12 m-auto mb-5 mt-[150px]  border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100"
       >
         <h1 className="mb-5 ">Sign in </h1>
         {apiError ? (

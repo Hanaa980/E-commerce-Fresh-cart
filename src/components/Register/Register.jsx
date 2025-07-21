@@ -72,12 +72,12 @@ export default function Register() {
 
       <form
         onSubmit={formikRegister.handleSubmit}
-        className="w-6/12 m-auto mb-5 mt-[150px]"
+        className="w-8/12 m-auto mb-5 mt-[150px] border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100"
       >
         <h1 className="mb-5 ">Register Now:</h1>
         {apiError ? (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
             role="alert"
           >
             {apiError}
@@ -104,7 +104,7 @@ export default function Register() {
           />
           {formikRegister.errors.name && formikRegister.touched.name ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikRegister.errors.name}
@@ -132,7 +132,7 @@ export default function Register() {
           />
           {formikRegister.errors.email && formikRegister.touched.email ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikRegister.errors.email}
@@ -160,7 +160,7 @@ export default function Register() {
           />
           {formikRegister.errors.password && formikRegister.touched.password ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikRegister.errors.password}
@@ -189,7 +189,7 @@ export default function Register() {
           {formikRegister.errors.rePassword &&
           formikRegister.touched.rePassword ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikRegister.errors.rePassword}
@@ -217,7 +217,7 @@ export default function Register() {
           />
           {formikRegister.errors.phone && formikRegister.touched.phone ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikRegister.errors.phone}
