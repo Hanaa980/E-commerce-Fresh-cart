@@ -50,7 +50,7 @@ export default function Register() {
       );
       localStorage.setItem("u-token", data.token);
       setToken(data.token);
-      navigate("/");
+      navigate("/login");
       sertIsLoader(false);
     } catch (error) {
       setApiError(error.response.data.message);
