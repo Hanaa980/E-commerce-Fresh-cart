@@ -50,7 +50,7 @@ export default function ForgetPass() {
 
       <form
         onSubmit={formikForgetPass.handleSubmit}
-        className="my-[200px] mx-auto w-8/12 border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100/50"
+        className="my-[200px] mx-auto w-8/12 border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100"
       >
         {apiError ? (
           <div
@@ -81,7 +81,7 @@ export default function ForgetPass() {
           />
           {formikForgetPass.errors.email && formikForgetPass.touched.email ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikForgetPass.errors.email}

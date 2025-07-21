@@ -57,12 +57,12 @@ export default function ResetPass() {
       </Helmet>
       <form
         onSubmit={formikResetPass.handleSubmit}
-        className="mt-[200px] w-6/12 m-auto mb-5  border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100"
+        className="my-[200px] w-8/12 m-auto   border-1 p-5 rounded-lg shadow-lg shadow-gray-700/50 bg-gray-100"
       >
         <h1 className="mb-5 ">Reset New Password</h1>
         {apiError ? (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
             role="alert"
           >
             {apiError}
@@ -89,7 +89,7 @@ export default function ResetPass() {
           />
           {formikResetPass.errors.email && formikResetPass.touched.email ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikResetPass.errors.email}
@@ -118,7 +118,7 @@ export default function ResetPass() {
           {formikResetPass.errors.newPassword &&
             formikResetPass.touched.newPassword ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikResetPass.errors.newPassword}

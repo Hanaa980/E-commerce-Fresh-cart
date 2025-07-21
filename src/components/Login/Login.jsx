@@ -65,7 +65,7 @@ export default function Login() {
         <h1 className="mb-5 ">Sign in </h1>
         {apiError ? (
           <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
             role="alert"
           >
             {apiError}
@@ -92,7 +92,7 @@ export default function Login() {
           />
           {formikLogin.errors.email && formikLogin.touched.email ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikLogin.errors.email}
@@ -120,7 +120,7 @@ export default function Login() {
           />
           {formikLogin.errors.password && formikLogin.touched.password ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {formikLogin.errors.password}
