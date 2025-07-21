@@ -35,9 +35,7 @@ export default function ResetPass() {
         values
       );
 
-      localStorage.setItem("u-token", data.token);
-      setToken(data.token);
-      navigate("/");
+      navigate("/login");
       sertIsLoader(false);
     } catch (error) {
       setApiError(error.response.data.message);
